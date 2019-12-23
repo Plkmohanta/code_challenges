@@ -1,5 +1,4 @@
 
-
 const getFrequencies1 = arr =>
 	arr.reduce((map, item) => {
 		map[item] = map[item] + 1 || 1;
@@ -376,4 +375,817 @@ function reverseCapitalize(str) {
 	return [...str].map(x => x.toUpperCase()).reverse().join('');
 
 }
-console.log(reverseCapitalize("abc"));
+//console.log(reverseCapitalize("abc"));
+function squaed(b) {
+	return Math.pow(b, 2);
+}
+/*
+function owofied(sentence) {
+	let a = sentence.replace(/i/g, "wi");
+	let b = a.replace(/e/g, "we");
+	return `${b} owo`;
+}
+function owofied(sentence) {
+	return sentence.replace(/i/g, "wi").replace(/e/g, "we") + " owo";
+} */
+
+function owofied(sentence) {
+	let arr = [...sentence];
+	let newArr = arr.map(x => {
+		if (x == 'i') {
+			return "wi";
+		}
+		if (x == 'e') {
+			return "we"
+		}
+		return x;
+	})
+	return newArr.join('') + " " + "owo";
+}
+
+//console.log(owofied("I'm gonna ride 'til I can't no more"));
+function getTotalPrice(groceries) {
+	let a = groceries.map(x => {
+		return x.price * x.quantity;
+	});
+	let b = a.reduce((total, index) => total + index);
+	return Number(b.toFixed(1));
+}
+// console.log(getTotalPrice([
+// 	{ product: "Milk", quantity: 1, price: 1.50 },
+// 	{ product: "Eggs", quantity: 12, price: 0.10 },
+// 	{ product: "Bread", quantity: 2, price: 1.60 },
+// 	{ product: "Cheese", quantity: 1, price: 4.50 }
+// ]));
+
+
+function toArray(num) {
+	let a = [...num.toString()];
+	return a.map(x => Number(x));
+}
+
+function toNumber(arr) {
+	return arr.join('');
+}
+
+// console.log(toArray(235));
+// console.log(toNumber([2, 3, 5]));
+function societyName(friends) {
+	return friends.map(x => x[0]).sort().join('')
+}
+//console.log(societyName(["Adam", "Sarah", "Malcolm"]));
+function convertBinary(str) {
+	return str
+		.replace(/[a-m]/gi, '0')
+		.replace(/[n-z]/gi, '1');
+}
+//console.log(convertBinary("house"));
+function combinations(items) {
+	var total = 1;
+	for (var i = 0; i < arguments.length; i++) {
+		if (arguments[i] == 0) {
+			total += arguments[i];
+		} else {
+			total *= arguments[i];
+
+		}
+	}
+	return total;
+}
+
+function combinations(items) {
+	return [...arguments].reduce((acc, item) => item === 0 ? acc : acc * item)
+}
+//console.log(combinations(6, 7, 0));
+function spelling(str) {
+	let res = [];
+	for (let i = 1; i <= str.length; i++) {
+		let newStr = str.substring(0, i);
+		res.push(newStr);
+	}
+	return res;
+}
+function spelling(str) {
+	return str.split('').map((c, i) => str.slice(0, i + 1));
+}
+
+//console.log(spelling("bee"));
+
+
+function isOmnipresent(arr, val) {
+	return arr.every((x, i) => {
+		return x.includes(val);
+	})
+}
+
+//console.log(isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 6));
+function toObject(arr) {
+	var rv = {};
+	for (var i = 0; i < arr.length; ++i) {
+		rv
+	}
+
+	return rv;
+}
+// function countLayers(rug) {
+// 	let allLayers = {};
+// 	let numOfLayers = 0;
+// 	for (let i = 0; i < rug.length; i++) {
+// 		if (!(allLayers.hasOwnProperty(rug[i]))) {
+// 			allLayers[rug[i]] = true;
+// 			numOfLayers++;
+// 		}
+// 	}
+// 	return numOfLayers;
+// }
+const countLayers = rug => new Set(rug).size;
+
+/*
+console.log(countLayers([
+	"AAAAAAAAA",
+	"ABBBBBBBA",
+	"ABBAAABBA",
+	"ABBBBBBBA",
+	"AAAAAAAAA"
+]));
+*/
+
+const lookAndSay = str => {
+	console.log(str.match(/(\d)\1*/g));
+
+
+	return str
+		.match(/(\d)\1*/g)
+		.map(group => group.length + group[0])
+		.join('');
+
+
+}
+
+
+//console.log(lookAndSay("1211"));
+// regex  5 digits long exactly and only contain numbers.
+// validZipcode
+
+function isValid(zip) {
+	const x = /^\d{5}$/;
+	return zip.match(x) == null ? false : true;
+}
+//console.log(isValid("590010"));
+
+function reverseCase(str) {
+	return [...str].map(x => {
+		if (x.toUpperCase() == x) {
+			return x.toLowerCase();
+		} else {
+			return x.toUpperCase()
+		}
+	}).join('');
+}
+//console.log(reverseCase("Happy Birthday"));
+function joinPath(portion1, portion2) {
+	return `${portion1.replace('/', '')}/${portion2.replace('/', '')}`;
+}
+//console.log(joinPath("portion1/", "portion2"));
+function isPrefix(word, prefix) {
+	let pef = prefix.substring(0, prefix.length - 1);
+	return word.startsWith(pef);
+}
+
+function isSuffix(word, suffix) {
+	let suf = suffix.substring(1, suffix.length);
+	return word.endsWith(suf);
+
+}
+
+function isPrefix(word, prefix) {
+	return word.startsWith(prefix.replace("-", ""));
+}
+
+function isSuffix(word, suffix) {
+	return word.endsWith(suffix.replace("-", ""));
+}
+//console.log(isPrefix("automation", "auto-"));
+//console.log(isSuffix("arachnophobia", "-phobia"));
+function indexShuffle(str) {
+	let a = [];
+	let b = [];
+	for (let i = 0; i < str.length; i++) {
+		if (i % 2 == 0 || i == 0) {
+			a.push(str[i]);
+		} else {
+			b.push(str[i])
+		}
+
+	}
+	return [...a, ...b].join('');
+}
+//console.log(indexShuffle("abcdefg"));
+function isSpecialArray(arr) {
+	let a = [];
+	let b = [];
+	for (let i = 0; i < arr.length; i++) {
+		if (i % 2 == 0 || i == 0) {
+			a.push(arr[i]);
+		} else {
+			b.push(arr[i])
+		}
+	}
+	return (a.every(x => x % 2 == 0) && b.every(x => x % 2 != 0)) ? true : false;
+}
+// let isSpecialArray = a => a.every((v, i) => v % 2 == i % 2);
+//console.log(isSpecialArray([2, 7, 4, 9, 6, 1, 6, 3]));
+function chatroom(users) {
+	let length = new Set([...users]).size;
+	if (length == 0) {
+		return "no one online";
+	}
+	if (length == 1) {
+		return `${users[0]} online`
+	}
+	if (length == 2) {
+		return `${users[0]} and ${users[1]} online`
+
+	}
+	if (length > 2) {
+		return `${users[0]},${users[1]} and ${length - 2} more online`
+
+	}
+}
+//console.log(chatroom(["s234f", "mailbox2", "lalsl"]));
+function capToFront(s) {
+	let a = [];
+	let b = [];
+	for (let i = 0; i < s.length; i++) {
+		if (s[i].toUpperCase() == s[i]) {
+			a.push(s[i]);
+		} else {
+			b.push(s[i])
+		}
+
+	}
+	return [...a, ...b].join('')
+}
+
+function capToFront(s) {
+	let lowerCase = [...s].filter(l => l === l.toLowerCase())
+	let upperCase = [...s].filter(l => l === l.toUpperCase())
+	return [...upperCase, ...lowerCase].join("")
+}
+//console.log(capToFront("hApPy"));
+function leftDigit(num) {
+	return + num.match(/\d+/)[0];
+}
+//Number(num.match(/[0-9]/)[0])     Number(str.match(/[\d]/));
+//console.log(leftDigit("TrAdE2W1n95!"));
+function findNemo(sentence) {
+	let newSentence = sentence.split(" ");
+	for (let i = 0; i < newSentence.length; ++i) {
+		if (newSentence[i] === "Nemo") {
+			return `I found Nemo at ${i + 1}!`
+		}
+	}
+	return "I can't find Nemo :("
+}
+//console.log(findNemo("Oh, hello !"));
+function isSymmetrical(num) {
+	let a = String(num).split('').reverse().join('');
+	return Number(a) === num;
+
+}
+//console.log(isSymmetrical(7227));
+
+function maximumScore(tileHand) {
+	let arr = tileHand.map(x => x.score);
+	return arr.reduce((total, index) => total + index);
+
+}
+/*
+console.log(maximumScore([
+	{ tile: "N", score: 1 },
+	{ tile: "K", score: 5 },
+	{ tile: "Z", score: 10 },
+	{ tile: "X", score: 8 },
+	{ tile: "D", score: 2 },
+	{ tile: "A", score: 1 },
+	{ tile: "E", score: 1 }
+]));
+*/
+
+function hasValidPrice(products) {
+	if (products == undefined | products == null) {
+		return false;
+	}
+	let { product, price } = products;
+
+	if (price < 0) {
+		return false;
+	}
+	return Number(price) === price;
+}
+
+function hasValidPrice(product) {
+	if (!product) return false
+	return (product.price === +product.price && product.price >= 0)
+}
+//console.log(hasValidPrice());
+function mauriceWins(mSnails, sSnails) {
+	let count1 = 0;
+	let count2 = 0;
+	if (mSnails[0] > sSnails[2]) {
+		count1++;
+	} else {
+		count2++;
+	}
+	if (mSnails[1] > sSnails[0]) {
+		count1++;
+	} else {
+		count2++;
+	}
+	if (mSnails[2] > sSnails[1]) {
+		count1++;
+	} else {
+		count2++;
+	}
+	return count1 > count2;
+}
+//const mauriceWins = (mS, sS) => mS[1] > sS[0] && mS[2] > sS[1]
+//console.log(mauriceWins([3, 5, 10], [4, 7, 11]));
+function countVowels(str) {
+	let vowelss = ['a', 'e', 'i', 'o', 'u'];
+	return [...str].filter(x => {
+		return vowelss.indexOf(x) != -1
+	}).length;
+}
+//regex for vowels str.match(/[aeiou]/g).length;
+function countVowels(str) {
+	return str.match(/[aeiou]/g).length;
+}
+//console.log(countVowels("Palm"));
+function isAvgWhole(arr) {
+	return Number.isInteger(arr.reduce((total, index) => total + index) / arr.length);
+}
+
+//console.log(isAvgWhole([1, 3,9]));
+function getAbsSum(arr) {
+	return arr.reduce((total, index) => total + Math.abs(index), 0)
+}
+//console.log(getAbsSum([-1]));
+function asciiCapitalize(str) {
+	let newStr = '';
+	for (let i = 0; i < str.length; i++) {
+		let key = str.charCodeAt(i);
+		if (key % 2 == 0) {
+			newStr += str[i].toUpperCase();
+		} else {
+			newStr += str[i].toLowerCase();
+		}
+
+	}
+	return newStr;
+}
+/*
+const asciiCapitalize = s => 
+	[...s].map(x => x.charCodeAt(0)%2 ? x.toLowerCase(): x.toUpperCase()).join("")
+	*/
+//console.log(asciiCapitalize("Oh what a beautiful morning."));
+function doubleChar(str) {
+	return [...str].map(x => {
+		return `${x}${x}`;
+	}).join('');
+}
+//console.log(doubleChar("Hello World!"));
+function totalVolumea(...boxes) {
+
+	return boxes.map(x => {
+		return [...x].reduce((total, index) => total * index)
+	}).reduce((a, i) => a + i);
+}
+
+const totalVolume = (...boxes) =>
+	boxes.reduce((total, [l, w, h]) => total + l * w * h, 0);
+//console.log(totalVolume([4, 2, 4], [3, 3, 3], [1, 1, 2], [2, 1, 1]));
+function countOnes(...matrix) {
+	return matrix.reduce((total, index) => total.concat(...index), []).filter(x => x == 1).length;
+}
+/*
+console.log(countOnes([
+	[1, 0],
+	[0, 0]
+]));
+*/
+function factorial(int) {
+	if (int == 1) {
+		return 1;
+	}
+	return int * factorial(int - 1);
+}
+
+//console.log(factorial(5));
+
+function duplicate(arr) {
+	return arr.filter((el, index, arrr) => {
+		return arrr.indexOf(el) == index;
+	})
+}
+//console.log(duplicate([1, 5, 9, 1, 5, 6, 9, 6]));
+
+function custoSort(arr, key) {
+	return arr.sort((a, b) => {
+		return b.id - a.id;
+	})
+}
+
+//console.log(custoSort([{ id: 2 }, { id: 3 }, { id: 1 }], 'id'));
+function twinWord(a, b) {
+	return [...a].sort().join('') == [...b].sort().join('');
+}
+//console.log(twinWord('lookout', 'outlook'));
+
+
+var ts = [7, -10, 13, 8, 4, -7.2, -12, -3.7, 3.5, -9.6, 6.5, -1.7, -6.2, 7];
+
+// function calculateClosestTo0(arr) {
+// 	let closest = 0
+// 	for (let i = 0; i < arr.length; i++) {
+// 		if (closest === 0) {
+// 			closest = arr[i]
+// 		} else if (arr[i] > 0 && arr[i] <= Math.abs(closest)) {
+// 			closest = arr[i]
+// 		} else if (arr[i] < 0 && -arr[i] < Math.abs(closest)) {
+// 			closest = arr[i]
+// 		}
+// 	}
+// 	return closest
+// }
+
+function calculateClosestTo0(arr) {
+	return arr.reduce((acc, x) =>
+		acc === 0 ? x :
+			x > 0 && x <= Math.abs(acc) ? x :
+				x < 0 && -x < Math.abs(acc) ? x : acc
+		, 0)
+}
+//console.log(calculateClosestTo0(ts));
+function FindMin(arr) {
+	//sort the array in increasing order
+	arr.sort((a, b) => {
+		return a - b;
+	});
+	let min = arr[1] - arr[0];
+	let n = arr.length;
+	for (var i = 0; i < n; i++) {
+		for (let j = 0; j < n; j++) {
+			let x = Math.abs(arr[i] - arr[j]);
+			if (x < min && x != 0) {
+				min = x;
+			}
+		}
+	}
+	return min; // minimum difference.
+}
+//console.log(FindMin([4, 5, 1, 32, 13]));
+
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+function monthsInterval(dateStart, dateEnd) {
+	var ph;
+	if (dateStart > dateEnd) {
+		ph = dateEnd;
+		dateEnd = dateStart;
+		dateStart = ph;
+	}
+
+	if (dateStart.getYear() < dateEnd.getYear() - 1) return monthNames;
+
+	var start = dateStart.getMonth();
+	var end = dateEnd.getMonth();
+
+	if (start > end) return monthNames.slice(0, end + 1).concat(monthNames.slice(start));
+	if (dateStart.getYear() < dateEnd.getYear()) end += 12;
+
+	return monthNames.slice(start, end + 1);
+}
+//console.log(monthsInterval(new Date(2016, 0, 1), new Date(2017, 0, 1)));
+const sortContacts = (names, sort) => {
+	if (!names) return [];
+
+	return names.sort((a, b) => {
+		const lastA = a.split(' ')[1];
+		const lastB = b.split(' ')[1];
+
+		return sort === 'ASC' ? lastA.localeCompare(lastB) : lastB.localeCompare(lastA);
+	});
+};
+
+//console.log(sortContacts(['Paul Erdos', 'Leonhard Euler', 'Carl Gauss'], 'DESC'));
+var numbers = [4, 2, 5, 1, 3];
+numbers.sort(function (a, b) {
+	return a - b;
+});
+//console.log(numbers);
+
+function primefactors(n) {
+	let factors = [];
+	for (let i = 2; i <= n; i++) {
+		if (n % i === 0) {
+			factors = [...factors, i];
+			while (n % i === 0) {
+				n /= i;
+			}
+		}
+	}
+	return factors;
+}
+
+//console.log(primefactors(100));
+
+function createArryFromNum(num) {
+	return [...Array(num)].map((_, i) => i);
+}
+//console.log(createArryFromNum(5));
+
+function characterMapping(str) {
+	d = Array.from(new Set(str.split('')));
+	console.log(d);
+
+	return str.split('').map(x => d.indexOf(x))
+}
+//console.log(characterMapping("abcd"));
+// function isPowerful(num) {
+
+// 	let num1 = num;
+// 	let factors = [];
+
+// 	for (let i = 2; i <= num1; i++) {
+// 		while ((num1 % i) === 0) {
+// 			factors.push(i);
+// 			num1 /= i;
+// 		}
+// 	}
+
+// 	return Array.from(new Set(factors)).every(x => num % (x * x) === 0);
+
+// }
+
+// function isPrime(n) {
+// 	if (n < 2) return false;
+// 	for (let i = 2; i <= Math.sqrt(n); i++) if (!(n % i)) return false;
+// 	return true;
+// }
+// const primeFactors = n => [...Array(n)].map((_, i) => i + 1).filter(v => !(n % v)).slice(1, -1).filter(isPrime);
+
+// const isPowerful = num => primeFactors(num).map(v => v * v).every(v => !(num % v))
+
+
+
+const getUnPriFactors = n => {
+	let factors = [];
+	for (let i = 2; i <= n; i++) {
+		if (n % i === 0) {
+			factors = [...factors, i];
+			while (n % i === 0) {
+				n /= i;
+			}
+		}
+	}
+	return factors;
+}
+
+const isPowerful = num => {
+	return getUnPriFactors(num).every(n => num % (n * n) === 0);
+}
+//console.log(isPowerful(36));
+function cars(wheels, bodies, figures) {
+	let numWheels = Math.floor(wheels / 4);
+	let numFigures = Math.floor(figures / 2);
+	return Math.min(numWheels, bodies, numFigures);
+}
+
+//console.log(cars(43, 15, 87));
+
+
+function additivePersistence(n, step = 0) {
+	if (n <= 9 && step == 0) {
+		return 0;
+	}
+	step++;
+	let numArr = [...String(n)].map(x => Number(x));
+	if (numArr.length == 1) {
+		return step - 1;
+	}
+
+	return additivePersistence(numArr.reduce((acc, index) => acc + index), step);
+}
+//console.log(additivePersistence(129));
+
+function multiplicativePersistence(n, step = 0) {
+	if (n <= 9 && step == 0) {
+		return 0;
+	}
+	step++;
+	let numArr = [...String(n)].map(x => Number(x));
+	if (numArr.length == 1) {
+		return step - 1;
+	}
+
+	return multiplicativePersistence(numArr.reduce((acc, index) => acc * index), step);
+}
+
+//console.log(multiplicativePersistence(77));
+function additivePersistence(n) {
+	let count = 0;
+	while (String(n).length > 1) {
+		n = [...String(n)].reduce((a, b) => +a + +b);
+		count++;
+	}
+	return count;
+}
+
+function multiplicativePersistence(n) {
+	let count = 0;
+	while (String(n).length > 1) {
+		n = [...String(n)].reduce((a, b) => +a * +b);
+		count++;
+	}
+	return count;
+}
+
+function sortByLength(arr) {
+	return arr.sort((a, b) => a.length - b.length);
+}
+
+//console.log(sortByLength(["Google", "Apple", "Microsoft"]));
+const netPresentValue = (pv, ir, years) => {
+	const npv = (1 - (1 + ir) ** -years) / ir * pv;
+	return npv < 0 ? false : `$${Math.round(npv)}`
+}
+
+//console.log(netPresentValue(100, 5, 1));
+/*
+Given an array of strings and an original string, write a function to output an array of boolean values -
+ true if the word can be formed from the original word by swapping two letters only once and false otherwise.*/
+
+function validateSwaps(arr, str) {
+	function twoOff(a, b) {
+		if (a.length !== b.length) { return false; }
+		let y = [...a];
+		let x = y.filter((v, i) => {
+			let p = b[i];
+			return v === p;
+		});
+		return x.length === a.length - 2;
+	}
+	return arr.map(v => twoOff(v, str));
+}
+
+/*
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+
+const strDiff = (str1, str2) =>
+	str1.split('').map((char, i) => char !== str2[i]);
+
+const validateSwaps = (arr, target) =>
+	arr.map(
+		str => str.length === target.length && sum(strDiff(str, target)) === 2
+	);
+	*/
+//console.log(validateSwaps(["BACDE", "EBCDA", "BCDEA", "ACBED"], "ABCDE"));
+
+function happy(n) {
+	if (n === 1) {
+		return true;
+	}
+	if (n >= 2 && n <= 9) {
+		return false;
+	}
+	let num = [...String(n)].map((v) => Number(v)).map(x => x * x);
+	let newNum = num.reduce((total, index) => {
+		return total + index;
+	});
+
+	return happy(newNum);
+}
+
+//console.log(happy(11));
+
+function formatPhoneNumber(numbers) {
+
+	let a = numbers.join('');
+	return `( ${a.substring(0, 3)}) ${a.substring(3, 6)}-${a.substring(6, 10)}`;
+
+}
+
+//console.log(formatPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
+/*
+Create a function that takes an array, finds the most repeated element(s) within it and returns it/them in an array (order not important). The function should work for both integers and strings mixed together within the input array (e.g. [1, 1, "a"]).
+*/
+
+/*
+function highestOccurrence(a) {
+	var cnt = new Map()
+	a.forEach(x => cnt.set(x, (cnt.get(x) || 0) + 1))
+	var hi = Math.max(...cnt.values())
+	return Array.from(cnt.entries()).filter(x => x[1] == hi).map(x => x[0])
+}
+*/
+
+function highestOccurrence(arr) {
+	const counts = arr.map(item => {
+		return arr.reduce((total, next) => {
+			return next === item ? total + 1 : total;
+		}, 0)
+	});
+	const mostFrequentCount = Math.max(...counts);
+	const result = new Set();
+	counts.forEach((count, i) => {
+		if (count === mostFrequentCount) {
+			result.add(arr[i]);
+		}
+	});
+	return Array.from(result);
+}
+//console.log(highestOccurrence([2, 3, 2, 5, 6, 7, 2]));
+
+
+
+/*
+class Shiritori {
+	constructor() {
+		this.words = [];
+		this.game_over = false;
+	}
+
+	static play(word) {
+		if (this.words.length > 0) {
+
+		}
+		const lastWord = this.words.slice(-1)[0] || '';
+		const lastChar = lastWord.slice(-1);
+
+		if (lastWord && (this.words.includes(word) || lastChar !== word[0])) {
+			this.game_over = true;
+			return 'game over';
+		}
+
+		this.words.push(word);
+		return this.words;
+	}
+
+	restart() {
+		this.words = [];
+		this.game_over = false;
+		return 'game restarted';
+	}
+}
+
+*/
+
+class Shiritori {
+	constructor() { this.init(); }
+
+	init() { this.words = []; this.game_over = false; }
+
+	restart() {
+		this.init();
+		return "game restarted";
+	}
+
+	play(w) {
+		if (
+			!this.words.includes(w) && (
+				!this.words.length ||
+				this.words[this.words.length - 1].slice(-1) === w[0]
+			)
+		) {
+			this.words.push(w);
+			return this.words;
+		} else {
+			this.game_over = true;
+			return "game over";
+		}
+	}
+}
+//console.log(Shiritori.play('apple'));
+
+function stringProto(str) {
+	let a = str.split(' ');
+	if (a.length == 1) {
+		return str.split('').reverse().join('');
+	}
+	let b = a.map(x => {
+		return x.split('').reverse().join('');
+	});
+	let newArr = [];
+	for (let i = b.length - 1; i >= 0; i--) {
+		newArr.push(b[i]);
+
+	}
+	return newArr.join(' ');
+}
+String.prototype.toString = function () {
+	return [...this].reverse().join("");
+};
+console.log(stringProto("Hello world!"));
+
+
